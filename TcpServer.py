@@ -15,6 +15,8 @@ import socketserver
 
 
 class MyTCPHandler(socketserver.BaseRequestHandler):
+    num = 50
+
     def handle(self):
         self.data = self.request.recv(1024).strip()
 
@@ -24,7 +26,8 @@ class MyTCPHandler(socketserver.BaseRequestHandler):
 
         # just send back the same data, but upper-cased
 
-        self.request.sendall(self.data.upper())
+        msg = '{2_0=02345;01523;04321}'  # now on off
+        self.request.sendall(msg.encode('utf-8'))
 
 
 if __name__ == "__main__":
